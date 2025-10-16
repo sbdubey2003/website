@@ -1,0 +1,5 @@
+{
+  "name": "N4T - Network 4 Technologies",
+  "description": "A responsive React-based website for N4T, an IT solutions provider specializing in hardware, networking, CCTV, and IT support services. Built with TypeScript and Tailwind CSS for a modern and professional look.",
+  "requestFramePermissions": []
+}
