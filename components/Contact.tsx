@@ -75,7 +75,7 @@ const Contact: React.FC = () => {
                                     </div>
                                     <div>
                                         <h5 className="font-bold text-lg">Email</h5>
-                                        <p className="text-slate-600">sbdubey@outlook.in</p>
+                                        <p className="text-slate-600">sbdubey@n4t.in  support@n4t.in</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start">
@@ -84,7 +84,7 @@ const Contact: React.FC = () => {
                                     </div>
                                     <div>
                                         <h5 className="font-bold text-lg">Service Hours</h5>
-                                        <p className="text-slate-600">24x7 All India Service</p>
+                                        <p className="text-slate-600">24x7 We Provide PAN India IT Service</p>
                                     </div>
                                 </div>
                             </div>
