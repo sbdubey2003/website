@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
                         <ul className="space-y-3 text-slate-400">
                             <li className="flex items-start"><MapMarkerIcon className="w-5 h-5 mr-3 mt-1 flex-shrink-0" /> Faridabad, Haryana - 121003</li>
                             <li className="flex items-start"><PhoneIcon className="w-5 h-5 mr-3 mt-1 flex-shrink-0" /> +91 7988678921, +91 8901996668</li>
-                            <li className="flex items-start"><EnvelopeIcon className="w-5 h-5 mr-3 mt-1 flex-shrink-0" /> sbdubey@n4t.in, support@n4t.in</li>
+                            <li className="flex items-start"><EnvelopeIcon className="w-5 h-5 mr-3 mt-1 flex-shrink-0" /> sbdubey@n4t.in  support@n4t.in</li>
                             <li className="flex items-start"><ClockIcon className="w-5 h-5 mr-3 mt-1 flex-shrink-0" /> 24x7 We Provide PAN India IT Service</li>
                         </ul>
                     </div>
