@@ -22,11 +22,13 @@ const Footer: React.FC = () => {
                     <div>
                         <h5 className="font-bold text-lg mb-4">Services</h5>
                         <ul className="space-y-2">
-                            <li><a href="#services" className="text-slate-400 hover:text-white hover:pl-2 transition-all duration-300">Hardware</a></li>
-                            <li><a href="#services" className="text-slate-400 hover:text-white hover:pl-2 transition-all duration-300">Networking</a></li>
+                            <li><a href="#services" className="text-slate-400 hover:text-white hover:pl-2 transition-all duration-300">Hardware Services</a></li>
+                            <li><a href="#services" className="text-slate-400 hover:text-white hover:pl-2 transition-all duration-300">Networking Services</a></li>
                             <li><a href="#services" className="text-slate-400 hover:text-white hover:pl-2 transition-all duration-300">CCTV</a></li>
                             <li><a href="#services" className="text-slate-400 hover:text-white hover:pl-2 transition-all duration-300">IT Support</a></li>
-                            <li><a href="#services" className="text-slate-400 hover:text-white hover:pl-2 transition-all duration-300">AMC</a></li>
+                            <li><a href="#services" className="text-slate-400 hover:text-white hover:pl-2 transition-all duration-300">AMC Support</a></li>
+                            <li><a href="#services" className="text-slate-400 hover:text-white hover:pl-2 transition-all duration-300">IT Consultant</a></li>
+                            <li><a href="#services" className="text-slate-400 hover:text-white hover:pl-2 transition-all duration-300"><Parts Requred /a></li>
                         </ul>
                     </div>
                      {/* Company Links */}
@@ -46,7 +48,7 @@ const Footer: React.FC = () => {
                             <li className="flex items-start"><MapMarkerIcon className="w-5 h-5 mr-3 mt-1 flex-shrink-0" /> Faridabad, Haryana - 121003</li>
                             <li className="flex items-start"><PhoneIcon className="w-5 h-5 mr-3 mt-1 flex-shrink-0" /> +91 7988678921, +91 8901996668</li>
                             <li className="flex items-start"><EnvelopeIcon className="w-5 h-5 mr-3 mt-1 flex-shrink-0" /> sbdubey@n4t.in, support@n4t.in</li>
-                            <li className="flex items-start"><ClockIcon className="w-5 h-5 mr-3 mt-1 flex-shrink-0" /> 24x7 All India Service</li>
+                            <li className="flex items-start"><ClockIcon className="w-5 h-5 mr-3 mt-1 flex-shrink-0" /> 24x7 We Provide PAN India IT Service</li>
                         </ul>
                     </div>
                 </div>
