@@ -29,10 +29,10 @@ const CTA: React.FC = () => {
                   e.preventDefault();
                   document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="px-8 py-4 rounded-xl text-base font-bold text-primary-900 bg-white hover:bg-blue-50 shadow-xl transform hover:-translate-y-0.5 transition duration-300 flex items-center space-x-2"
+                className="group px-8 py-4 rounded-xl text-base font-bold text-slate-900 bg-white hover:bg-blue-50 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 flex items-center space-x-2.5 cursor-pointer"
               >
-                <span>Request Free Site Audit</span>
-                <ArrowRightIcon className="w-5 h-5 text-primary-600" />
+                <span className="text-slate-900 font-extrabold group-hover:text-primary-700 transition-colors">Request Free Site Audit</span>
+                <ArrowRightIcon className="w-5 h-5 text-primary-600 group-hover:text-primary-700 transform group-hover:translate-x-1.5 transition-all duration-300" />
               </a>
 
               <a 

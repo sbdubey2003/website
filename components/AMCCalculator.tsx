@@ -204,10 +204,10 @@ const AMCCalculator: React.FC = () => {
                 <div className="mt-8 pt-4 border-t border-white/15">
                   <button
                     onClick={handleApplyEstimate}
-                    className="w-full py-3.5 px-6 rounded-xl text-sm font-bold text-primary-900 bg-white hover:bg-blue-50 shadow-lg transition duration-200 flex items-center justify-center space-x-2"
+                    className="group w-full py-3.5 px-6 rounded-xl text-sm font-bold text-slate-900 bg-white hover:bg-blue-50 shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center space-x-2"
                   >
-                    <span>Request Official Quotation</span>
-                    <ArrowRightIcon className="w-4 h-4" />
+                    <span className="text-slate-900 font-extrabold group-hover:text-primary-700 transition-colors">Request Official Quotation</span>
+                    <ArrowRightIcon className="w-4 h-4 text-primary-600 group-hover:text-primary-700 transform group-hover:translate-x-1 transition-all" />
                   </button>
                 </div>
 
