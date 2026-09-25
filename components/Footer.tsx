@@ -30,10 +30,10 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-4">
             <div className="mb-5">
               <img 
-                src="/N4T.png" 
+                src="/logo.jpeg" 
                 alt="N4T - Network 4 Technologies" 
                 className="w-48 sm:w-56 h-auto max-h-16 md:max-h-20 object-contain"
-                onError={(e: any) => { e.target.style.display = 'none'; }}
+                onError={(e: any) => { e.currentTarget.src = '/logo.png'; }}
               />
             </div>
 

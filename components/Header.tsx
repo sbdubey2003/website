@@ -106,9 +106,10 @@ const Header: React.FC = () => {
               className="flex items-center group py-0.5"
             >
               <img 
-                src="/N4T.png" 
+                src="/logo.jpeg" 
                 alt="N4T - Network 4 Technologies" 
                 className="w-36 sm:w-44 md:w-52 h-auto max-h-12 sm:max-h-13 md:max-h-14 object-contain transition-transform duration-200 group-hover:scale-105"
+                onError={(e: any) => { e.currentTarget.src = '/logo.png'; }}
               />
             </a>
 
