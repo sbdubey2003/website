@@ -1,127 +1,292 @@
-
-import React from 'react';
-import { DesktopIcon, LaptopIcon, PrinterIcon, ToolsIcon, HeadsetIcon } from './Icons';
-
-const SectionTitle: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-    <h2 className="text-3xl md:text-4xl font-bold relative inline-block mb-3 after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-1/2 after:h-1 after:bg-gradient-to-r after:from-primary after:to-secondary">
-        {children}
-    </h2>
-);
-
-const ServiceCard: React.FC<{ icon: React.ReactNode; title: string; text: string }> = ({ icon, title, text }) => (
-    <div className="bg-white rounded-xl shadow-lg p-6 h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-        <div className="text-4xl mb-4 bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text">
-            {icon}
-        </div>
-        <h4 className="text-xl font-bold mb-2">{title}</h4>
-        <p className="text-slate-600">{text}</p>
-    </div>
-);
-
-const ServiceFeature: React.FC<{ num: number; title: string; text: string }> = ({ num, title, text }) => (
-    <div className="flex items-start mb-6">
-        <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-gradient-to-r from-primary to-secondary text-white font-bold rounded-full mr-4">
-            {num}
-        </div>
-        <div>
-            <h4 className="text-xl font-bold">{title}</h4>
-            <p className="text-slate-600">{text}</p>
-        </div>
-    </div>
-);
-
+import React, { useState } from 'react';
+import { 
+  DesktopIcon, 
+  LaptopIcon, 
+  PrinterIcon, 
+  ToolsIcon, 
+  HeadsetIcon, 
+  NetworkWiredIcon, 
+  WifiIcon, 
+  ServerIcon, 
+  CctvIcon, 
+  ShieldIcon, 
+  CheckCircleIcon,
+  ArrowRightIcon
+} from './Icons';
 
 const Services: React.FC = () => {
+  const [filter, setFilter] = useState<'all' | 'hardware' | 'networking' | 'cctv' | 'amc'>('all');
+
+  const handleServiceSelect = (serviceName: string) => {
+    const contactElem = document.getElementById('contact');
+    if (contactElem) {
+      contactElem.scrollIntoView({ behavior: 'smooth' });
+      const select = document.getElementById('service-select') as HTMLSelectElement;
+      if (select) {
+        select.value = serviceName;
+      }
+    }
+  };
+
+  const servicesData = [
+    {
+      category: 'hardware',
+      id: 'hardware-sales',
+      title: 'Commercial Desktops & All-in-Ones',
+      desc: 'Enterprise-grade desktop computers, custom performance CAD/rendering rigs, and sleek all-in-one workstations built for durability and productivity.',
+      icon: <DesktopIcon className="w-7 h-7 text-blue-600" />,
+      features: ['Intel Core i3/i5/i7/i9 & AMD Ryzen', 'SSD NVMe high-speed storage', 'Bulk business procurement pricing', 'Pre-configured OS & company software'],
+      brands: ['Dell', 'HP', 'Lenovo', 'Asus'],
+      tag: 'Best Seller'
+    },
+    {
+      category: 'hardware',
+      id: 'hardware-sales',
+      title: 'Enterprise Laptops & Mobile Workstations',
+      desc: 'Lightweight business laptops and heavy-duty mobile workstations designed for executive leadership, field staff, and technical developers.',
+      icon: <LaptopIcon className="w-7 h-7 text-cyan-600" />,
+      features: ['Military-spec durability tested', 'Long-lasting battery with rapid charge', 'Hardware TPM 2.0 data security', 'Comprehensive warranty with on-site care'],
+      brands: ['Lenovo ThinkPad', 'Dell Latitude', 'HP EliteBook', 'Apple'],
+      tag: 'Mobility'
+    },
+    {
+      category: 'hardware',
+      id: 'hardware-sales',
+      title: 'Industrial & Office Printers',
+      desc: 'High-speed laser printers, multifunction heavy-duty copier machines, and network barcode/label printers with lowest cost per page.',
+      icon: <PrinterIcon className="w-7 h-7 text-indigo-600" />,
+      features: ['Duplex auto double-sided printing', 'High-speed wireless & LAN connectivity', 'Low-maintenance toner cartridge systems', 'Heavy duty duty cycle for large offices'],
+      brands: ['HP LaserJet', 'Canon', 'Epson', 'Brother'],
+      tag: 'Office Essential'
+    },
+    {
+      category: 'networking',
+      id: 'networking-solutions',
+      title: 'Structured LAN & Fiber Optic Cabling',
+      desc: 'Turnkey structured network design, CAT6/CAT6A high-speed cabling, optical fiber splicing, patch panel termination, and neat cable management.',
+      icon: <NetworkWiredIcon className="w-7 h-7 text-emerald-600" />,
+      features: ['Gigabit & 10G high-bandwidth backbone', 'Fluke certification testing', 'Rack organization & neat labelling', 'Zero packet drop guarantee'],
+      brands: ['D-Link', 'Schneider', 'CommScope', 'Molex'],
+      tag: 'Infrastructure'
+    },
+    {
+      category: 'networking',
+      id: 'networking-solutions',
+      title: 'Enterprise Wi-Fi & Firewall Security',
+      desc: 'Seamless mesh Wi-Fi 6 coverage for multi-story offices and industrial warehouses, coupled with hardware UTM Firewalls preventing cyber attacks.',
+      icon: <WifiIcon className="w-7 h-7 text-sky-600" />,
+      features: ['Zero dead-zone coverage mapping', 'VLAN guest network isolation', 'Intrusion prevention & content filtering', 'Bandwidth management & QoS'],
+      brands: ['Cisco', 'Fortinet', 'Sophos', 'Ubiquiti UniFi'],
+      tag: 'Security & Wi-Fi'
+    },
+    {
+      category: 'networking',
+      id: 'networking-solutions',
+      title: 'Server Racks & Data Center Setup',
+      desc: 'Supply and installation of floor-standing server racks, PDU power distribution units, KVM switches, and intelligent cable trays.',
+      icon: <ServerIcon className="w-7 h-7 text-blue-600" />,
+      features: ['4U up to 42U standardized racks', 'Controlled cooling & perforated ventilation', 'High-capacity redundant power PDUs', 'Lockable tamper-resistant glass doors'],
+      brands: ['Netrack', 'Valrack', 'APC Schneider', 'D-Link'],
+      tag: 'Data Center'
+    },
+    {
+      category: 'cctv',
+      id: 'cctv-surveillance',
+      title: 'High-Definition IP CCTV Surveillance',
+      desc: 'Full HD & 4K Ultra HD IP surveillance cameras with crystal-clear color night vision, optical zoom, and weather-proof metal enclosures.',
+      icon: <CctvIcon className="w-7 h-7 text-emerald-600" />,
+      features: ['Starlight color night vision up to 50m', 'Waterproof IP67 for outdoor use', 'Audio recording & two-way talk', 'Wide angle 120° FOV lens'],
+      brands: ['Hikvision', 'CP Plus', 'Dahua', 'Honeywell'],
+      tag: 'Security Essential'
+    },
+    {
+      category: 'cctv',
+      id: 'cctv-surveillance',
+      title: 'AI Smart Surveillance & Biometrics',
+      desc: 'AI-driven intrusion alerts, facial recognition, license plate recognition, and fingerprint/face biometric attendance machines.',
+      icon: <ShieldIcon className="w-7 h-7 text-cyan-600" />,
+      features: ['Instant mobile alert notifications', 'Biometric employee attendance sync', 'Access control door lock integration', 'Human/Vehicle AI filtering'],
+      brands: ['Hikvision AI', 'eSSL', 'ZKTeco', 'CP Plus'],
+      tag: 'AI Smart'
+    },
+    {
+      category: 'amc',
+      id: 'amc-services',
+      title: 'Comprehensive IT AMC (Annual Maintenance)',
+      desc: 'Complete all-in-one protection contract covering regular preventive maintenance, unlimited on-site emergency callouts, and hardware repairs.',
+      icon: <ServerIcon className="w-7 h-7 text-primary-600" />,
+      features: ['Both Comprehensive & Non-Comprehensive plans', 'SLA under 2-4 hours response time', 'Monthly health check & cleaning', 'Spare parts replacement assistance'],
+      brands: ['Multi-brand Support', 'Windows & Linux', 'Desktops/Servers'],
+      tag: 'Most Popular'
+    },
+    {
+      category: 'amc',
+      id: 'it-support',
+      title: '24x7 Helpdesk & On-Site IT Support',
+      desc: 'Experienced resident engineers and remote desktop assistance for instant bug fixes, printer issues, software installation, and virus elimination.',
+      icon: <HeadsetIcon className="w-7 h-7 text-amber-600" />,
+      features: ['Remote instant screen sharing support', 'Fast on-site engineer dispatch in NCR & India', 'OS reinstallation & data recovery', 'Antivirus & ransomware defense'],
+      brands: ['Microsoft Certified', 'Cisco Certified', 'Hardware Specialists'],
+      tag: '24/7 Hotline'
+    },
+    {
+      category: 'amc',
+      id: 'it-support',
+      title: 'Hardware Troubleshooting & Component Repair',
+      desc: 'Chip-level diagnosis and component-level repair of logic boards, SMPS power supplies, server RAM, screen replacements, and thermal overhauls.',
+      icon: <ToolsIcon className="w-7 h-7 text-rose-600" />,
+      features: ['Chip-level BGA machine repair', 'Original OEM replacement parts', 'Diagnostic testing before dispatch', 'Cost-effective repair over replacement'],
+      brands: ['All OEM Brands', 'Intel/AMD Platforms', 'Server Hardware'],
+      tag: 'Expert Lab'
+    }
+  ];
+
+  const filteredServices = filter === 'all' 
+    ? servicesData 
+    : servicesData.filter(s => s.category === filter);
+
   return (
-    <section id="services" className="py-20">
-      <div className="container mx-auto px-4">
+    <section id="services" className="py-24 md:py-32 bg-slate-50 relative">
+      <div className="container mx-auto px-4 sm:px-6">
         
-        {/* IT Hardware Sales */}
-        <div id="hardware-sales" className="scroll-mt-24">
-          <div className="text-center mb-16">
-            <SectionTitle>IT Hardware Sales</SectionTitle>
-            <p className="text-lg text-slate-600 mt-4 max-w-2xl mx-auto">High-quality hardware solutions for business and personal use</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-            <ServiceCard icon={<DesktopIcon className="w-10 h-10" />} title="Desktops" text="High-performance desktops for business and personal use. We offer a range of brands and configurations to meet your specific needs." />
-            <ServiceCard icon={<LaptopIcon className="w-10 h-10" />} title="Laptops" text="Portable and powerful laptops for on-the-go productivity. Our selection includes top brands with various screen sizes and features." />
-            <ServiceCard icon={<PrinterIcon className="w-10 h-10" />} title="Printers" text="Reliable printers for all your printing needs, from basic home use to high-volume office printing. Choose from inkjet, laser, and multifunction models." />
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="inline-block px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-bold text-primary-700 uppercase tracking-widest mb-4">
+            End-To-End Enterprise Capabilities
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4 font-display">
+            Comprehensive IT Solutions & Services
+          </h2>
+          <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+            Delivering robust hardware procurement, high-speed network infrastructure, precision surveillance, and SLA-guaranteed maintenance tailored to your business needs.
+          </p>
+
+          {/* Filter Pills (Clean Light Styling) */}
+          <div className="flex flex-wrap justify-center gap-2 mt-8 p-1.5 bg-white border border-slate-200 rounded-2xl max-w-2xl mx-auto shadow-sm">
+            <button
+              onClick={() => setFilter('all')}
+              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition ${filter === 'all' ? 'bg-primary-600 text-white shadow-md' : 'text-slate-600 hover:text-slate-900'}`}
+            >
+              All Solutions
+            </button>
+            <button
+              onClick={() => setFilter('hardware')}
+              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition ${filter === 'hardware' ? 'bg-primary-600 text-white shadow-md' : 'text-slate-600 hover:text-slate-900'}`}
+            >
+              Hardware & PC
+            </button>
+            <button
+              onClick={() => setFilter('networking')}
+              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition ${filter === 'networking' ? 'bg-primary-600 text-white shadow-md' : 'text-slate-600 hover:text-slate-900'}`}
+            >
+              Networking & Racks
+            </button>
+            <button
+              onClick={() => setFilter('cctv')}
+              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition ${filter === 'cctv' ? 'bg-primary-600 text-white shadow-md' : 'text-slate-600 hover:text-slate-900'}`}
+            >
+              CCTV Surveillance
+            </button>
+            <button
+              onClick={() => setFilter('amc')}
+              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition ${filter === 'amc' ? 'bg-primary-600 text-white shadow-md' : 'text-slate-600 hover:text-slate-900'}`}
+            >
+              AMC & Support
+            </button>
           </div>
         </div>
 
-        {/* Networking Solutions */}
-        <div id="networking-solutions" className="flex flex-wrap items-center -mx-4 mb-20 scroll-mt-24">
-            <div className="w-full lg:w-1/2 px-4 mb-8 lg:mb-0">
-                <div className="text-left mb-8">
-                    <SectionTitle>Networking Solutions</SectionTitle>
-                    <p className="text-lg text-slate-600 mt-4">Secure and reliable network infrastructure for your business</p>
+        {/* Services Grid (Crisp White Cards with Soft Shadow) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredServices.map((service, index) => (
+            <div 
+              key={index}
+              id={service.id}
+              className="scroll-mt-28 bg-white border border-slate-200/90 rounded-3xl p-7 flex flex-col justify-between shadow-sm hover:shadow-xl hover:border-blue-400/60 transition-all duration-300 group"
+            >
+              <div>
+                {/* Card Top: Icon & Tag */}
+                <div className="flex justify-between items-start mb-6">
+                  <div className="p-3.5 rounded-2xl bg-blue-50/80 border border-blue-100 group-hover:bg-blue-600 group-hover:text-white transition duration-300">
+                    <span className="group-hover:brightness-200 transition">
+                      {service.icon}
+                    </span>
+                  </div>
+                  <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-blue-50 text-blue-700 border border-blue-200">
+                    {service.tag}
+                  </span>
                 </div>
-                <ServiceFeature num={1} title="Secure Connectivity" text="We provide secure and reliable network solutions to keep your business connected and protected from cyber threats." />
-                <ServiceFeature num={2} title="Wireless Solutions" text="Implement robust Wi-Fi networks for seamless connectivity throughout your office or business premises." />
-                <ServiceFeature num={3} title="Network Design" text="Our experts design and implement network infrastructures tailored to your specific requirements, ensuring optimal performance and scalability." />
-            </div>
-            <div className="w-full lg:w-1/2 px-4">
-                <img src="https://img.freepik.com/premium-photo/network-engineers-working-server-room-with-laptop_23-2148323444.jpg?w=996" alt="Networking Solutions" className="w-full h-auto rounded-2xl shadow-xl" />
-            </div>
-        </div>
 
-        {/* CCTV Surveillance */}
-        <div id="cctv-surveillance" className="bg-slate-100 rounded-2xl p-8 md:p-12 mb-20 scroll-mt-24">
-             <div className="flex flex-wrap items-center -mx-4">
-                <div className="w-full lg:w-1/2 px-4 mb-8 lg:mb-0">
-                    <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9" alt="CCTV Surveillance" className="w-full h-auto rounded-2xl shadow-xl"/>
-                </div>
-                <div className="w-full lg:w-1/2 px-4">
-                    <div className="text-left mb-8">
-                       <SectionTitle>CCTV Surveillance</SectionTitle>
+                {/* Title & Description */}
+                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-primary-600 transition-colors font-display">
+                  {service.title}
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                  {service.desc}
+                </p>
+
+                {/* Features checklist */}
+                <div className="space-y-2.5 mb-6 pt-4 border-t border-slate-100">
+                  {service.features.map((feature, fIndex) => (
+                    <div key={fIndex} className="flex items-start text-xs text-slate-700 font-medium">
+                      <CheckCircleIcon className="w-4 h-4 text-emerald-500 mr-2 flex-shrink-0 mt-0.5" />
+                      <span>{feature}</span>
                     </div>
-                    <div className="space-y-4">
-                        <div>
-                            <h4 className="text-xl font-bold">Advanced Security</h4>
-                            <p className="text-slate-600">Protect your premises with our advanced CCTV surveillance systems, providing monitoring and peace of mind.</p>
-                        </div>
-                        <div>
-                            <h4 className="text-xl font-bold">Remote Access</h4>
-                            <p className="text-slate-600">Monitor your property remotely from anywhere in the world via your smartphone or computer.</p>
-                        </div>
-                         <div>
-                            <h4 className="text-xl font-bold">Real-Time Alerts</h4>
-                            <p className="text-slate-600">Receive instant alerts and notifications when suspicious activity is detected, enabling rapid response and prevention.</p>
-                        </div>
-                    </div>
-                     <a href="#contact" className="mt-6 inline-block bg-gradient-to-r from-primary to-secondary text-white font-bold py-3 px-6 rounded-full hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">Get Your CCTV System</a>
+                  ))}
                 </div>
-             </div>
-        </div>
+              </div>
 
-        {/* IT Support */}
-        <div id="it-support" className="scroll-mt-24">
-          <div className="text-center mb-16">
-            <SectionTitle>Comprehensive IT Support</SectionTitle>
-            <p className="text-lg text-slate-600 mt-4 max-w-2xl mx-auto">Professional technical support for all your IT needs</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-            <ServiceCard icon={<ToolsIcon className="w-10 h-10" />} title="CCTV Setup & Maintenance" text="Professional installation and ongoing maintenance of your surveillance systems." />
-            <ServiceCard icon={<DesktopIcon className="w-10 h-10" />} title="Hardware Troubleshooting" text="Diagnose and repair hardware issues to keep your systems running smoothly." />
-            <ServiceCard icon={<HeadsetIcon className="w-10 h-10" />} title="Remote Support" text="Quick resolution of technical issues through our remote support services." />
-          </div>
-        </div>
+              {/* Bottom: Partner Brands & Action */}
+              <div className="pt-4 border-t border-slate-100">
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {service.brands.map((brand, bIndex) => (
+                    <span key={bIndex} className="text-[10px] font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">
+                      {brand}
+                    </span>
+                  ))}
+                </div>
+                <button
+                  onClick={() => handleServiceSelect(service.title)}
+                  className="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-slate-700 bg-slate-50 hover:bg-primary-600 hover:text-white border border-slate-200 hover:border-primary-600 transition duration-200 flex items-center justify-center space-x-2"
+                >
+                  <span>Request Solution Details</span>
+                  <ArrowRightIcon className="w-3.5 h-3.5" />
+                </button>
+              </div>
 
-        {/* AMC Services */}
-        <div id="amc-services" className="bg-slate-100 rounded-2xl p-8 md:p-12 scroll-mt-24">
-            <div className="flex flex-wrap items-center -mx-4">
-                <div className="w-full lg:w-1/2 px-4 mb-8 lg:mb-0 lg:order-2">
-                     <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="AMC Services" className="w-full h-auto rounded-2xl shadow-xl" />
-                </div>
-                <div className="w-full lg:w-1/2 px-4 lg:order-1">
-                    <div className="text-left mb-8">
-                        <SectionTitle>AMC Services</SectionTitle>
-                    </div>
-                    <ServiceFeature num={1} title="Proactive Maintenance" text="We provide proactive maintenance to prevent potential issues and ensure your systems are always running smoothly." />
-                    <ServiceFeature num={2} title="Regular Checkups" text="Our AMC services include regular system checkups, software updates, and hardware maintenance to optimize performance." />
-                    <ServiceFeature num={3} title="Peace of Mind" text="With our AMC services, you can enjoy peace of mind knowing that your IT infrastructure is in expert hands." />
-                </div>
             </div>
+          ))}
+        </div>
+
+        {/* Feature Spotlight Banner: Turnkey AMC Advantage (Light Gradient with Rich Accents) */}
+        <div className="mt-20 rounded-3xl p-8 sm:p-12 bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 text-white shadow-2xl relative overflow-hidden">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
+            <div className="max-w-2xl">
+              <span className="text-cyan-300 text-xs font-extrabold uppercase tracking-widest">
+                Comprehensive Office Coverage
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-white mt-2 mb-4 font-display">
+                Need A Reliable AMC Partner For Your Entire IT Infrastructure?
+              </h3>
+              <p className="text-blue-100 text-sm sm:text-base leading-relaxed">
+                Protect your business from unpredictable hardware crashes, network slowdowns, and security vulnerabilities with N4T's structured Annual Maintenance Contracts. We offer dedicated resident engineers, guaranteed SLAs, and OEM spare part supply.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+              <a
+                href="#amc-calculator"
+                className="px-8 py-3.5 rounded-xl text-center text-sm font-bold text-blue-900 bg-white hover:bg-blue-50 shadow-lg transition duration-200"
+              >
+                Estimate AMC Cost
+              </a>
+              <a
+                href="#contact"
+                className="px-8 py-3.5 rounded-xl text-center text-sm font-semibold text-white bg-blue-950/60 hover:bg-blue-950/80 border border-blue-400/40 transition duration-200"
+              >
+                Consult an Engineer
+              </a>
+            </div>
+          </div>
         </div>
 
       </div>
