@@ -1,6 +1,13 @@
-
 import React, { useState, useEffect } from 'react';
-import { NetworkWiredIcon } from './Icons';
+import { 
+  NetworkWiredIcon, 
+  DesktopIcon, 
+  CctvIcon, 
+  ServerIcon, 
+  ToolsIcon, 
+  PhoneIcon,
+  WhatsAppIcon
+} from './Icons';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -10,122 +17,319 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 30);
     };
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const handleNavClick = (e: React.MouseEvent<HTMLElement>, targetId: string) => {
     e.preventDefault();
-    document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
     setIsMenuOpen(false);
   };
-  
-  const navLinks = [
-    { href: '#home', label: 'Home' },
-    { 
-      href: '#services',
-      label: 'Services',
-      sublinks: [
-        { href: '#hardware-sales', label: 'Hardware Sales' },
-        { href: '#networking-solutions', label: 'Networking Solutions' },
-        { href: '#cctv-surveillance', label: 'CCTV Surveillance' },
-        { href: '#it-support', label: 'IT Support' },
-        { href: '#amc-services', label: 'AMC Services' },
-      ]
+
+  const serviceItems = [
+    {
+      id: 'hardware-sales',
+      title: 'IT Hardware Sales',
+      desc: 'Desktops, Laptops, Workstations & Printers',
+      icon: <DesktopIcon className="w-5 h-5 text-blue-600" />,
+      badge: 'Genuine OEM'
     },
-    { href: '#why-us', label: 'Why Us' },
-    { href: '#contact', label: 'Contact' },
+    {
+      id: 'networking-solutions',
+      title: 'Networking & Cabling',
+      desc: 'Firewalls, Routers, Racks & Enterprise Wi-Fi',
+      icon: <NetworkWiredIcon className="w-5 h-5 text-cyan-600" />,
+      badge: 'High Speed'
+    },
+    {
+      id: 'cctv-surveillance',
+      title: 'CCTV Surveillance',
+      desc: 'AI IP Cameras, NVR/DVR & Remote Monitoring',
+      icon: <CctvIcon className="w-5 h-5 text-emerald-600" />,
+      badge: '24/7 Security'
+    },
+    {
+      id: 'it-support',
+      title: 'On-Demand IT Support',
+      desc: 'Hardware repair, OS, troubleshooting & SLA',
+      icon: <ToolsIcon className="w-5 h-5 text-amber-600" />,
+      badge: 'Fast SLA'
+    },
+    {
+      id: 'amc-services',
+      title: 'Enterprise AMC Support',
+      desc: 'Comprehensive annual maintenance contracts',
+      icon: <ServerIcon className="w-5 h-5 text-indigo-600" />,
+      badge: 'Proactive'
+    },
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-dark/95 backdrop-blur-sm shadow-lg py-3' : 'bg-dark/80 backdrop-blur-sm py-4'}`}>
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center">
-          <a href="#home" onClick={(e) => handleNavClick(e, 'home')} className="flex items-center text-white text-lg font-semibold">
-            <NetworkWiredIcon className="w-6 h-6 mr-2" />
-            <span><span className="font-bold">N4T</span> - Network 4 Technologies</span>
-          </a>
-          
-          <nav className="hidden lg:flex items-center space-x-2">
-            {navLinks.map(link => (
-              link.sublinks ? (
-                <div 
-                  key={link.label}
-                  className="relative"
-                  onMouseEnter={() => setIsServicesMenuOpen(true)}
-                  onMouseLeave={() => setIsServicesMenuOpen(false)}
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+      {/* Top emergency hotline bar (Compact Light Mode) */}
+      <div className={`hidden md:block bg-slate-100/95 text-slate-600 text-[11px] py-1 px-4 border-b border-slate-200 transition-opacity duration-300 ${isScrolled ? 'opacity-0 h-0 overflow-hidden py-0' : 'opacity-100'}`}>
+        <div className="container mx-auto flex justify-between items-center">
+          <div className="flex items-center space-x-3">
+            <span className="flex items-center text-emerald-700 font-semibold">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1.5 animate-pulse"></span>
+              24x7 Pan-India IT Support & Emergency Service
+            </span>
+            <span className="text-slate-300">|</span>
+            <span className="text-slate-500 font-medium">Faridabad, Delhi NCR & Across India</span>
+          </div>
+          <div className="flex items-center space-x-5 font-medium">
+            <a href="tel:+917988678921" className="flex items-center text-slate-700 hover:text-primary-600 transition">
+              <PhoneIcon className="w-3 h-3 mr-1 text-primary-600" />
+              <span>+91 7988678921</span>
+            </a>
+            <a href="https://wa.me/message/PTHIABDDRPO4E1" target="_blank" rel="noopener noreferrer" className="flex items-center text-emerald-600 hover:text-emerald-700 transition">
+              <WhatsAppIcon className="w-3 h-3 mr-1" />
+              <span>WhatsApp Direct</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className={`transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-xl shadow-md border-b border-slate-200/90 py-1' : 'bg-white/90 backdrop-blur-md border-b border-slate-200/60 py-1.5'}`}>
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex justify-between items-center">
+            {/* Logo */}
+            <a 
+              href="#home" 
+              onClick={(e) => handleNavClick(e, 'home')} 
+              className="flex items-center group py-0.5"
+            >
+              <img 
+                src="/N4T.png" 
+                alt="N4T - Network 4 Technologies" 
+                className="w-36 sm:w-44 md:w-52 h-auto max-h-12 sm:max-h-13 md:max-h-14 object-contain transition-transform duration-200 group-hover:scale-105"
+              />
+            </a>
+
+            {/* Desktop Navigation Links (Light Theme) */}
+            <nav className="hidden lg:flex items-center space-x-1">
+              <a
+                href="#home"
+                onClick={(e) => handleNavClick(e, 'home')}
+                className="px-4 py-2 text-sm font-semibold text-slate-700 hover:text-primary-600 rounded-lg hover:bg-slate-100 transition"
+              >
+                Home
+              </a>
+
+              {/* Services Dropdown */}
+              <div 
+                className="relative"
+                onMouseEnter={() => setIsServicesMenuOpen(true)}
+                onMouseLeave={() => setIsServicesMenuOpen(false)}
+              >
+                <button
+                  onClick={(e) => handleNavClick(e, 'services')}
+                  className="flex items-center px-4 py-2 text-sm font-semibold text-slate-700 hover:text-primary-600 rounded-lg hover:bg-slate-100 transition"
                 >
-                  <a href={link.href} onClick={(e) => handleNavClick(e, link.href.substring(1))} className="text-white px-3 py-2 rounded-md hover:bg-white/10 transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-primary after:to-secondary after:transition-all after:duration-300 hover:after:w-full flex items-center cursor-pointer">
-                    {link.label}
-                    <svg className={`w-4 h-4 ml-1 transition-transform duration-200 ${isServicesMenuOpen ? 'rotate-180' : ''}`} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
-                  </a>
-                  <div className={`absolute top-full left-0 mt-2 w-56 rounded-md shadow-lg bg-dark/95 backdrop-blur-sm ring-1 ring-black ring-opacity-5 transition-opacity duration-200 ${isServicesMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-                    <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                      {link.sublinks.map(sublink => (
+                  <span>Services</span>
+                  <svg 
+                    className={`w-4 h-4 ml-1.5 text-slate-400 transform transition-transform duration-200 ${isServicesMenuOpen ? 'rotate-180 text-primary-600' : ''}`} 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                {/* Dropdown Menu (Clean White Shadow) */}
+                <div className={`absolute top-full left-0 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 p-3 mt-2 transition-all duration-200 ${isServicesMenuOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-2 pointer-events-none'}`}>
+                  <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3 py-1 mb-1">
+                    Enterprise Capabilities
+                  </div>
+                  <div className="space-y-1">
+                    {serviceItems.map(item => (
+                      <a
+                        key={item.id}
+                        href={`#${item.id}`}
+                        onClick={(e) => {
+                          handleNavClick(e, item.id);
+                          setIsServicesMenuOpen(false);
+                        }}
+                        className="flex items-start p-2.5 rounded-xl hover:bg-blue-50/70 transition group"
+                      >
+                        <div className="p-2 rounded-lg bg-slate-100 group-hover:bg-blue-100 mr-3 transition">
+                          {item.icon}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center justify-between">
+                            <span className="text-sm font-bold text-slate-800 group-hover:text-primary-600 transition">
+                              {item.title}
+                            </span>
+                            <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 font-semibold">
+                              {item.badge}
+                            </span>
+                          </div>
+                          <p className="text-xs text-slate-500 truncate mt-0.5">
+                            {item.desc}
+                          </p>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                  <div className="mt-2 pt-2 border-t border-slate-100 px-3 flex justify-between items-center text-xs">
+                    <span className="text-slate-500">Custom business setups?</span>
+                    <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="text-primary-600 font-bold hover:underline">
+                      Inquire now →
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <a
+                href="#amc-calculator"
+                onClick={(e) => handleNavClick(e, 'amc-calculator')}
+                className="px-4 py-2 text-sm font-semibold text-slate-700 hover:text-primary-600 rounded-lg hover:bg-slate-100 transition"
+              >
+                AMC Estimator
+              </a>
+
+              <a
+                href="#why-us"
+                onClick={(e) => handleNavClick(e, 'why-us')}
+                className="px-4 py-2 text-sm font-semibold text-slate-700 hover:text-primary-600 rounded-lg hover:bg-slate-100 transition"
+              >
+                Why N4T
+              </a>
+
+              <a
+                href="#contact"
+                onClick={(e) => handleNavClick(e, 'contact')}
+                className="px-4 py-2 text-sm font-semibold text-slate-700 hover:text-primary-600 rounded-lg hover:bg-slate-100 transition"
+              >
+                Contact
+              </a>
+            </nav>
+
+            {/* Right Quick Action Button */}
+            <div className="hidden lg:flex items-center space-x-3">
+              <a
+                href="#contact"
+                onClick={(e) => handleNavClick(e, 'contact')}
+                className="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-bold text-white bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 shadow-md shadow-blue-500/20 hover:shadow-lg transition duration-200"
+              >
+                <span>Get Instant Quote</span>
+                <svg className="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+
+            {/* Mobile Hamburger Button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="lg:hidden p-2 rounded-xl text-slate-700 hover:text-slate-900 bg-slate-100 border border-slate-200"
+              aria-label="Toggle Navigation"
+            >
+              {isMenuOpen ? (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+              )}
+            </button>
+          </div>
+
+          {/* Mobile Drawer Menu (Light Mode) */}
+          {isMenuOpen && (
+            <div className="lg:hidden mt-3 p-4 bg-white border border-slate-200 rounded-2xl shadow-xl">
+              <nav className="flex flex-col space-y-1">
+                <a
+                  href="#home"
+                  onClick={(e) => handleNavClick(e, 'home')}
+                  className="px-4 py-2.5 text-sm font-bold text-slate-800 rounded-lg hover:bg-slate-100"
+                >
+                  Home
+                </a>
+
+                {/* Mobile Services Accordion */}
+                <div>
+                  <button
+                    onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                    className="w-full flex justify-between items-center px-4 py-2.5 text-sm font-bold text-slate-800 rounded-lg hover:bg-slate-100"
+                  >
+                    <span>Our Services</span>
+                    <svg className={`w-4 h-4 transform transition-transform ${isMobileServicesOpen ? 'rotate-180 text-primary-600' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  {isMobileServicesOpen && (
+                    <div className="ml-3 pl-3 border-l-2 border-slate-200 space-y-1 py-1">
+                      {serviceItems.map(item => (
                         <a
-                          key={sublink.href}
-                          href={sublink.href}
-                          onClick={(e) => {
-                            handleNavClick(e, sublink.href.substring(1));
-                            setIsServicesMenuOpen(false);
-                          }}
-                          className="block px-4 py-2 text-sm text-white hover:bg-white/10"
-                          role="menuitem"
+                          key={item.id}
+                          href={`#${item.id}`}
+                          onClick={(e) => handleNavClick(e, item.id)}
+                          className="block px-3 py-2 text-xs font-semibold text-slate-600 hover:text-primary-600 rounded-md hover:bg-slate-50"
                         >
-                          {sublink.label}
+                          {item.title}
                         </a>
                       ))}
                     </div>
-                  </div>
+                  )}
                 </div>
-              ) : (
-                <a key={link.href} href={link.href} onClick={(e) => handleNavClick(e, link.href.substring(1))} className="text-white px-3 py-2 rounded-md hover:bg-white/10 transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-primary after:to-secondary after:transition-all after:duration-300 hover:after:w-full">{link.label}</a>
-              )
-            ))}
-             <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="ml-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold py-2 px-5 rounded-full hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">Get Quote</a>
-          </nav>
 
-          <button className="lg:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-          </button>
-        </div>
-      </div>
-      
-      {/* Mobile Menu */}
-      <div className={`lg:hidden transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
-        <nav className="flex flex-col items-center pt-4 pb-2 space-y-1">
-           {navLinks.map(link => (
-              link.sublinks ? (
-                <div key={link.label} className="w-full text-center">
-                  <button onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)} className="text-white py-2 w-full text-center hover:bg-white/10 rounded-md transition-colors flex justify-center items-center">
-                      {link.label}
-                      <svg className={`w-5 h-5 ml-2 transition-transform duration-300 ${isMobileServicesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
-                  </button>
-                  <div className={`transition-all duration-300 ease-in-out overflow-hidden ${isMobileServicesOpen ? 'max-h-96' : 'max-h-0'}`}>
-                      <div className="flex flex-col items-center bg-white/5 pt-1 pb-2 mt-1 mx-4 rounded-md">
-                          {link.sublinks.map(sublink => (
-                              <a
-                                  key={sublink.href}
-                                  href={sublink.href}
-                                  onClick={(e) => handleNavClick(e, sublink.href.substring(1))}
-                                  className="text-slate-200 py-2 w-full text-center hover:bg-white/10 rounded-md transition-colors"
-                              >
-                                  {sublink.label}
-                              </a>
-                          ))}
-                      </div>
+                <a
+                  href="#amc-calculator"
+                  onClick={(e) => handleNavClick(e, 'amc-calculator')}
+                  className="px-4 py-2.5 text-sm font-bold text-slate-800 rounded-lg hover:bg-slate-100"
+                >
+                  AMC Estimator
+                </a>
+
+                <a
+                  href="#why-us"
+                  onClick={(e) => handleNavClick(e, 'why-us')}
+                  className="px-4 py-2.5 text-sm font-bold text-slate-800 rounded-lg hover:bg-slate-100"
+                >
+                  Why Choose N4T
+                </a>
+
+                <a
+                  href="#contact"
+                  onClick={(e) => handleNavClick(e, 'contact')}
+                  className="px-4 py-2.5 text-sm font-bold text-slate-800 rounded-lg hover:bg-slate-100"
+                >
+                  Contact & Support
+                </a>
+
+                <div className="pt-3 border-t border-slate-100">
+                  <a
+                    href="#contact"
+                    onClick={(e) => handleNavClick(e, 'contact')}
+                    className="w-full text-center block bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-bold py-3 px-6 rounded-xl shadow-md"
+                  >
+                    Get Free Quote
+                  </a>
+                  <div className="flex justify-around items-center mt-3 text-xs text-slate-500">
+                    <a href="tel:+917988678921" className="flex items-center text-primary-600 font-semibold">
+                      <PhoneIcon className="w-3.5 h-3.5 mr-1" />
+                      +91 7988678921
+                    </a>
+                    <a href="https://wa.me/message/PTHIABDDRPO4E1" target="_blank" rel="noopener noreferrer" className="flex items-center text-emerald-600 font-semibold">
+                      <WhatsAppIcon className="w-3.5 h-3.5 mr-1" />
+                      WhatsApp
+                    </a>
                   </div>
                 </div>
-              ) : (
-                <a key={link.href} href={link.href} onClick={(e) => handleNavClick(e, link.href.substring(1))} className="text-white py-2 w-full text-center hover:bg-white/10 rounded-md transition-colors">{link.label}</a>
-              )
-            ))}
-            <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="mt-2 w-4/5 bg-gradient-to-r from-primary to-secondary text-white font-semibold py-2 px-5 rounded-full hover:shadow-lg transition-all duration-300">Get Quote</a>
-        </nav>
+              </nav>
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );
