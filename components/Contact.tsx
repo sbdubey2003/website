@@ -4,7 +4,7 @@ import {
   PhoneIcon, 
   EnvelopeIcon, 
   ClockIcon, 
-  WhatsAppIcon, 
+  WhatsAppIcon,
   CheckCircleIcon,
   ArrowRightIcon
 } from './Icons';
@@ -71,139 +71,136 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-[#080d1a] text-white relative tech-grid-dark border-t border-slate-800/80">
+    <section id="contact" className="py-24 md:py-32 bg-slate-50 text-slate-900 relative">
       <div className="container mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block px-3.5 py-1 rounded-full bg-cyan-950/60 border border-cyan-800/70 text-xs font-mono font-bold text-cyan-400 uppercase tracking-widest mb-4">
-            // 04. DIRECT ENGINEERING DESK
+          <span className="inline-block px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-bold text-primary-700 uppercase tracking-widest mb-4">
+            Connect With Our Engineers
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4 font-display">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4 font-display">
             Let's Discuss Your Technology Requirements
           </h2>
-          <p className="text-slate-400 text-base sm:text-lg">
+          <p className="text-slate-600 text-base sm:text-lg">
             Have an immediate hardware requirement or need ongoing IT maintenance? Our solution architects respond within 30 minutes.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* Left Form: Inquiries & Quotes (Dark Glass Card) */}
-          <div className="lg:col-span-7 bg-[#0c1222]/90 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-2xl">
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 font-display">
+          {/* Left Form: Inquiries & Quotes (Crisp White Card) */}
+          <div className="lg:col-span-7 bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-10 shadow-xl">
+            <h3 className="text-2xl font-bold text-slate-900 mb-2 font-display">
               Request a Commercial Quote
             </h3>
-            <p className="text-xs text-slate-400 mb-8 font-mono">
-              // Fill in your organization's details below to receive a formal scope of work & estimate.
+            <p className="text-sm text-slate-500 mb-8">
+              Fill in your organization's details below to receive a formal scope of work & estimate.
             </p>
 
             {/* Status Notifications */}
             {status === 'success' && (
-              <div className="mb-6 p-4 rounded-2xl bg-emerald-950/80 border border-emerald-700/80 text-emerald-200 flex items-start space-x-3 animate-fadeIn">
-                <CheckCircleIcon className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
-                <div className="text-xs">
-                  <div className="font-bold text-emerald-300">Commercial Quote Request Dispatched!</div>
-                  <div className="text-emerald-400/90 mt-0.5">
-                    Your details have been successfully forwarded to our engineering inbox. Our solution architects will contact you within 30 minutes.
+              <div className="mb-6 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 flex items-start space-x-3 animate-fadeIn">
+                <CheckCircleIcon className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" />
+                <div className="text-sm">
+                  <div className="font-bold text-emerald-900">Commercial Quote Request Dispatched!</div>
+                  <div className="text-emerald-700 mt-0.5">
+                    Your details have been successfully forwarded to our engineering inbox via Resend. Our solution architects will contact you within 30 minutes.
                   </div>
                 </div>
               </div>
             )}
 
             {status === 'error' && (
-              <div className="mb-6 p-4 rounded-2xl bg-amber-950/80 border border-amber-700/80 text-amber-200 space-y-2 animate-fadeIn">
+              <div className="mb-6 p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 space-y-2 animate-fadeIn">
                 <div className="flex items-start space-x-3">
-                  <span className="text-amber-400 text-base flex-shrink-0">⚠️</span>
-                  <div className="text-xs">
-                    <div className="font-bold text-amber-300">Inquiry Notice</div>
-                    <div className="text-amber-400/90 text-xs mt-0.5">{feedbackMessage}</div>
+                  <span className="text-amber-600 text-lg flex-shrink-0">⚠️</span>
+                  <div className="text-sm">
+                    <div className="font-bold">Inquiry Notice</div>
+                    <div className="text-amber-800 text-xs mt-0.5">{feedbackMessage}</div>
                   </div>
                 </div>
 
                 {needsKeyNotice && (
-                  <div className="text-[11px] bg-slate-900 p-3 rounded-xl border border-amber-800/80 text-slate-300 font-mono">
-                    <strong>Quick Setup:</strong> Add your Resend API Key in <code className="text-cyan-400">.env</code>:
-                    <div className="text-[10px] bg-black text-emerald-400 p-2 rounded mt-1.5 overflow-x-auto">
+                  <div className="text-xs bg-white/70 p-3 rounded-xl border border-amber-200 text-slate-700">
+                    <strong>Quick Setup:</strong> Open your <code className="bg-amber-100 px-1 py-0.5 rounded font-mono text-amber-900">.env</code> file and add your Resend API Key:
+                    <div className="font-mono text-[11px] bg-slate-900 text-emerald-400 p-2 rounded mt-1.5 overflow-x-auto">
                       RESEND_API_KEY=re_your_api_key_here
                     </div>
                   </div>
                 )}
 
-                <div className="pt-2 flex items-center justify-between border-t border-amber-800/50 text-xs">
-                  <span className="text-slate-400">Need instant response?</span>
+                <div className="pt-2 flex items-center justify-between border-t border-amber-200/60 text-xs">
+                  <span className="text-slate-600">Need instant response?</span>
                   <a 
                     href="https://wa.me/message/PTHIABDDRPO4E1" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-emerald-400 font-bold hover:underline"
+                    className="inline-flex items-center text-emerald-700 font-bold hover:underline"
                   >
-                    <span>Connect on WhatsApp</span>
-                    <ArrowRightIcon className="w-3.5 h-3.5 ml-1" />
+                    Send directly on WhatsApp &rarr;
                   </a>
                 </div>
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
                     Your Full Name *
                   </label>
-                  <input
-                    type="text"
-                    required
+                  <input 
+                    type="text" 
                     value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="e.g. Rahul Sharma"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 text-xs transition"
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    placeholder="e.g. Rahul Sharma" 
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-primary-600 focus:ring-1 focus:ring-primary-600 transition text-sm" 
+                    required 
                   />
                 </div>
-
                 <div>
-                  <label className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-400 mb-1.5">
-                    Contact Phone Number *
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                    Company / Work Email *
                   </label>
-                  <input
-                    type="tel"
-                    required
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="e.g. +91 98765 43210"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 text-xs transition font-mono"
+                  <input 
+                    type="email" 
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    placeholder="name@company.com" 
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-primary-600 focus:ring-1 focus:ring-primary-600 transition text-sm" 
+                    required 
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-400 mb-1.5">
-                    Official Email ID *
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                    Contact Phone Number *
                   </label>
-                  <input
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="e.g. rahul@company.com"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 text-xs transition font-mono"
+                  <input 
+                    type="tel" 
+                    value={formData.phone}
+                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                    placeholder="+91 98765 43210" 
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-primary-600 focus:ring-1 focus:ring-primary-600 transition text-sm" 
+                    required 
                   />
                 </div>
-
                 <div>
-                  <label className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-400 mb-1.5">
-                    Service Required *
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                    Primary Service Needed
                   </label>
-                  <select
+                  <select 
                     id="service-select"
                     value={formData.service}
-                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 text-xs transition"
+                    onChange={(e) => setFormData({...formData, service: e.target.value})}
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:bg-white focus:border-primary-600 focus:ring-1 focus:ring-primary-600 transition text-sm"
                   >
-                    {serviceOptions.map((s, idx) => (
-                      <option key={idx} value={s} className="bg-slate-900 text-white">
-                        {s}
+                    {serviceOptions.map((opt, idx) => (
+                      <option key={idx} value={opt} className="bg-white text-slate-900">
+                        {opt}
                       </option>
                     ))}
                   </select>
@@ -211,117 +208,148 @@ const Contact: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-400 mb-1.5">
-                  Detailed Infrastructure Requirement *
+                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                  Requirement Scope & Details *
                 </label>
-                <textarea
+                <textarea 
                   id="message-textarea"
-                  rows={4}
-                  required
+                  rows={4} 
                   value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Specify system quantities, current issues, or office locations..."
-                  className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 text-xs transition"
+                  onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  placeholder="Tell us about the number of computers, office locations, timeline, or current technical challenges..." 
+                  className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-primary-600 focus:ring-1 focus:ring-primary-600 transition text-sm" 
+                  required
                 ></textarea>
               </div>
 
-              <button
-                type="submit"
+              <button 
+                type="submit" 
                 disabled={status === 'loading'}
-                className="w-full py-3.5 px-6 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-blue-600 via-primary-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 shadow-xl shadow-blue-600/30 hover:shadow-cyan-500/40 transition-all duration-200 border border-blue-400/40 flex items-center justify-center space-x-2"
+                className={`w-full py-4 px-8 rounded-xl font-bold text-white transition duration-300 flex items-center justify-center space-x-2 text-base shadow-xl shadow-blue-500/20 ${
+                  status === 'loading' 
+                    ? 'bg-primary-400 cursor-not-allowed' 
+                    : 'bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 active:scale-[0.99]'
+                }`}
               >
                 {status === 'loading' ? (
-                  <span>Sending Inquiry...</span>
+                  <>
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span>Sending to Engineering Desk...</span>
+                  </>
                 ) : (
                   <>
-                    <span>Submit Request for Quotation</span>
-                    <ArrowRightIcon className="w-4 h-4" />
+                    <span>Request Commercial Quote</span>
+                    <ArrowRightIcon className="w-5 h-5" />
                   </>
                 )}
               </button>
             </form>
           </div>
 
-          {/* Right Helpdesk Card (Dark Sapphire) */}
+          {/* Right Column: Direct Info & Quick Hotline */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="bg-[#0c1222]/90 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-2xl">
-              <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-widest">
-                // CORPORATE HEADQUARTERS
-              </span>
-              <h3 className="text-xl font-bold text-white mt-1 mb-6 font-display">
-                Network 4 Technologies
-              </h3>
+            
+            {/* Headquarters Card (Clean White) */}
+            <div className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 shadow-sm">
+              <h4 className="text-xl font-bold text-slate-900 mb-6 font-display">
+                Headquarters & Contact
+              </h4>
 
-              <div className="space-y-4 text-xs text-slate-300">
+              <div className="space-y-6">
                 <div className="flex items-start">
-                  <div className="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-cyan-400 mr-3 flex-shrink-0">
-                    <MapMarkerIcon className="w-4 h-4" />
+                  <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-blue-50 text-primary-600 border border-blue-100 flex items-center justify-center mr-4">
+                    <MapMarkerIcon className="w-6 h-6" />
                   </div>
                   <div>
-                    <div className="font-bold text-white">Operations & Lab Facility</div>
-                    <div className="text-slate-400 mt-0.5">Faridabad, Haryana - 121003, NCR, India</div>
+                    <h5 className="text-sm font-bold text-slate-800">Registered Address</h5>
+                    <p className="text-sm text-slate-600 mt-0.5">
+                      Faridabad, Haryana - 121003, India
+                    </p>
+                    <span className="text-[11px] text-slate-500 block mt-0.5">
+                      Serving Faridabad, Gurugram, Delhi NCR & All Major Cities
+                    </span>
                   </div>
                 </div>
 
                 <div className="flex items-start">
-                  <div className="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-cyan-400 mr-3 flex-shrink-0">
-                    <PhoneIcon className="w-4 h-4" />
+                  <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-cyan-50 text-cyan-600 border border-cyan-100 flex items-center justify-center mr-4">
+                    <PhoneIcon className="w-6 h-6" />
                   </div>
                   <div>
-                    <div className="font-bold text-white">Direct Phone Lines</div>
-                    <a href="tel:+917988678921" className="text-cyan-400 block font-mono hover:underline mt-0.5">
-                      +91 7988678921
-                    </a>
-                    <a href="tel:+918901996668" className="text-slate-400 block font-mono hover:text-cyan-400 mt-0.5">
-                      +91 8901996668
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-cyan-400 mr-3 flex-shrink-0">
-                    <EnvelopeIcon className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-white">Official Correspondence</div>
-                    <a href="mailto:sbdubey@n4t.in" className="text-cyan-400 block hover:underline mt-0.5 font-mono">
-                      sbdubey@n4t.in
-                    </a>
-                    <a href="mailto:support@n4t.in" className="text-slate-400 block hover:text-cyan-400 mt-0.5 font-mono">
-                      support@n4t.in
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-emerald-400 mr-3 flex-shrink-0">
-                    <ClockIcon className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-white">Engineering Support SLA</div>
-                    <div className="text-emerald-400 font-semibold font-mono mt-0.5">
-                      24x7 Emergency Helpdesk & Pan-India Dispatch
+                    <h5 className="text-sm font-bold text-slate-800">Direct Phone Hotlines</h5>
+                    <div className="mt-1 space-y-1">
+                      <a href="tel:+917988678921" className="block text-sm text-slate-700 hover:text-primary-600 font-mono font-medium transition">
+                        +91 7988678921 (Primary Support)
+                      </a>
+                      <a href="tel:+918901996668" className="block text-sm text-slate-700 hover:text-primary-600 font-mono font-medium transition">
+                        +91 8901996668 (Sales & AMC)
+                      </a>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="mt-8 pt-6 border-t border-slate-800 flex items-center justify-between">
-                <span className="text-[11px] text-slate-400 font-mono">Need instant chat?</span>
-                <a
-                  href="https://wa.me/message/PTHIABDDRPO4E1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl text-xs font-bold text-emerald-300 bg-emerald-950/70 border border-emerald-800/80 hover:bg-emerald-900 transition"
-                >
-                  <WhatsAppIcon className="w-3.5 h-3.5" />
-                  <span>WhatsApp Support</span>
-                </a>
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 border border-emerald-100 flex items-center justify-center mr-4">
+                    <EnvelopeIcon className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h5 className="text-sm font-bold text-slate-800">Email Addresses</h5>
+                    <div className="mt-1 space-y-1">
+                      <a href="mailto:sbdubey@n4t.in" className="block text-sm text-slate-700 hover:text-emerald-600 font-medium transition">
+                        sbdubey@n4t.in
+                      </a>
+                      <a href="mailto:support@n4t.in" className="block text-sm text-slate-700 hover:text-emerald-600 font-medium transition">
+                        support@n4t.in
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 border border-amber-100 flex items-center justify-center mr-4">
+                    <ClockIcon className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h5 className="text-sm font-bold text-slate-800">Operation Hours</h5>
+                    <p className="text-sm text-slate-600 mt-0.5">
+                      24 Hours / 7 Days a Week
+                    </p>
+                    <span className="text-[11px] text-emerald-600 font-semibold block mt-0.5">
+                      ● Active Emergency Response Available
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
+
+            {/* Direct WhatsApp Quick Chat Banner (Light Mode) */}
+            <div className="rounded-3xl p-6 bg-emerald-50 border border-emerald-200/80 shadow-md flex items-center justify-between">
+              <div className="flex items-center space-x-4">
+                <div className="p-3 rounded-2xl bg-emerald-600 text-white shadow-md">
+                  <WhatsAppIcon className="w-7 h-7" />
+                </div>
+                <div>
+                  <div className="text-sm font-bold text-slate-900">Instant WhatsApp Chat</div>
+                  <div className="text-xs text-slate-600">Directly message our IT Support Desk</div>
+                </div>
+              </div>
+              <a 
+                href="https://wa.me/message/PTHIABDDRPO4E1" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow transition"
+              >
+                Chat Now
+              </a>
+            </div>
+
           </div>
 
         </div>
+
       </div>
     </section>
   );

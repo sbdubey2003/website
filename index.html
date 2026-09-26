@@ -9,7 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
@@ -17,12 +17,8 @@
             fontFamily: {
               sans: ['"Plus Jakarta Sans"', 'sans-serif'],
               display: ['"Outfit"', 'sans-serif'],
-              mono: ['"JetBrains Mono"', 'monospace'],
             },
             colors: {
-              canvas: '#060913',
-              surface: '#0c1222',
-              'surface-card': '#0f172a',
               primary: {
                 DEFAULT: '#2563eb',
                 50: '#eff6ff',
@@ -39,38 +35,32 @@
               },
               secondary: {
                 DEFAULT: '#06b6d4',
-                400: '#22d3ee',
                 500: '#06b6d4',
                 600: '#0891b2',
               },
               accent: {
                 DEFAULT: '#10b981',
-                400: '#34d399',
                 500: '#10b981',
                 amber: '#f59e0b',
               },
               dark: {
-                DEFAULT: '#060913',
-                950: '#03050a',
-                900: '#060913',
-                850: '#0b1020',
-                800: '#111827',
-                700: '#1e293b',
+                DEFAULT: '#0a0f1d',
+                950: '#050811',
+                900: '#0a0f1d',
+                850: '#0f172a',
+                800: '#1e293b',
+                700: '#334155',
               },
+              light: '#f8fafc',
             },
             animation: {
               'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
               'float': 'float 3s ease-in-out infinite',
-              'glow': 'glow 2s ease-in-out infinite alternate',
             },
             keyframes: {
               float: {
                 '0%, 100%': { transform: 'translateY(0)' },
                 '50%': { transform: 'translateY(-8px)' },
-              },
-              glow: {
-                'from': { boxShadow: '0 0 10px rgba(56, 189, 248, 0.2)' },
-                'to': { boxShadow: '0 0 25px rgba(56, 189, 248, 0.6)' }
               }
             }
           },
@@ -79,7 +69,7 @@
     </script>
     <link rel="stylesheet" href="/index.css">
   </head>
-  <body class="font-sans bg-[#060913] text-slate-100 antialiased selection:bg-blue-600 selection:text-white">
+  <body class="font-sans bg-slate-50 text-slate-900 antialiased selection:bg-primary-500 selection:text-white">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>
