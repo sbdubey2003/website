@@ -904,23 +904,71 @@
           }
         }
 
-        // 2. Hardware / Laptops / Workstations
+        // 1. Hardware, Laptops, PCs, Desktops, Workstations, CAD, Refurbished, Upgrades
         if (
           query.includes('laptop') || query.includes('desktop') || query.includes('pc') ||
           query.includes('computer') || query.includes('workstation') || query.includes('hardware') ||
           query.includes('dell') || query.includes('hp') || query.includes('lenovo') ||
           query.includes('thinkpad') || query.includes('macbook') || query.includes('kharidna') ||
-          query.includes('chahiye')
+          query.includes('chahiye') || query.includes('refurbished') || query.includes('purana') ||
+          query.includes('second hand') || query.includes('tally') || query.includes('accounting') ||
+          query.includes('graphic') || query.includes('cad') || query.includes('rendering')
         ) {
+          if (query.includes('tally') || query.includes('account')) {
+            return {
+              text: `📊 **Best Corporate Workstations for Tally Prime, Busy & Accounts:**\n\n` +
+                `For accounting firms & finance teams, we configure ultra-reliable, zero-hang PCs:\n\n` +
+                `• **Recommended Specs**: Intel Core i3/i5 12th/13th Gen, 16GB DDR4/DDR5 RAM, 512GB NVMe SSD.\n` +
+                `• **Models**: Lenovo ThinkCentre Tiny / Dell OptiPlex Small Form Factor / HP ProDesk.\n` +
+                `• **Data Safety**: Auto daily backup drive configuration (protecting Tally data from crash or ransomware).\n` +
+                `• **Price Range**: Starting ₹28,000 to ₹42,000 (with GST invoice & on-site warranty).\n\n` +
+                `Would you like commercial desktop quotation for 1 or multiple systems?`,
+              actions: [
+                { label: '💬 Get Tally PC Quote on WhatsApp', actionType: 'whatsapp', payload: 'Hi N4T, I need a quotation for Tally/Accounting computers.' },
+                { label: '📝 Fill Quote Form', actionType: 'scroll', payload: 'contact' }
+              ]
+            };
+          }
+
+          if (query.includes('cad') || query.includes('graphic') || query.includes('render') || query.includes('video editing')) {
+            return {
+              text: `🚀 **High-Performance CAD, 3D Rendering & Engineering Rigs:**\n\n` +
+                `Customized precision workstations engineered for AutoCAD, SolidWorks, Revit, 3ds Max & Blender:\n\n` +
+                `• **Processors**: Intel Core i7-14700K / i9-14900K or AMD Ryzen 9 7900X.\n` +
+                `• **Graphics**: Nvidia RTX 4060 / 4070 / 4080 or dedicated workstation Nvidia RTX A2000/A4000.\n` +
+                `• **Memory & Storage**: 32GB to 64GB High-Speed RAM, 1TB Gen4 M.2 NVMe SSD + 2TB HDD.\n` +
+                `• **Display Support**: Dual 27" 4K IPS color-calibrated monitors.\n` +
+                `• **Certifications**: 100% stress-tested with liquid/tower cooling for 24x7 rendering without throttling.`,
+              actions: [
+                { label: '💬 Inquire CAD Workstation on WhatsApp', actionType: 'whatsapp', payload: 'Hi N4T, I need a quotation for a heavy CAD / 3D Rendering workstation.' },
+                { label: '📞 Speak with Solutions Architect', actionType: 'call', payload: '+917988678921' }
+              ]
+            };
+          }
+
+          if (query.includes('refurbished') || query.includes('second hand') || query.includes('purana')) {
+            return {
+              text: `♻️ **Certified Commercial Refurbished Laptops & Desktops:**\n\n` +
+                `Need corporate hardware on an optimized budget? We provide Grade-A+ enterprise refurbished machines:\n\n` +
+                `• **Laptops**: Lenovo ThinkPad T480/T490/X1 Carbon, Dell Latitude 5400/7490, HP EliteBook.\n` +
+                `• **Specs**: Intel Core i5/i7, 8GB/16GB RAM, 256GB/512GB SSD with fresh Windows 11 Pro.\n` +
+                `• **Warranty**: 6 Months to 1 Year complete testing replacement warranty.\n` +
+                `• **Savings**: Up to 60-70% lower than brand new MRP (Starting ₹16,000 - ₹26,000)!`,
+              actions: [
+                { label: '💬 Check Refurbished Stock on WhatsApp', actionType: 'whatsapp', payload: 'Hi N4T, please share available stock & pricing for refurbished ThinkPad/Dell laptops.' },
+                { label: '📞 Call Sales Team', actionType: 'call', payload: '+917988678921' }
+              ]
+            };
+          }
+
           return {
             text: `💻 **N4T Hardware & Enterprise Workstation Supply:**\n\n` +
-              `We provide bulk and commercial hardware procurement with enterprise warranty & pre-configured deployment:\n\n` +
-              `• **Business Laptops**: Lenovo ThinkPad, Dell Latitude / XPS, HP EliteBook, Apple MacBook.\n` +
-              `• **Commercial Desktops**: Dell OptiPlex, HP ProDesk, Lenovo ThinkCentre, All-in-One PCs.\n` +
-              `• **Engineering CAD & Render Rigs**: Multi-core Intel Core i7/i9, AMD Ryzen, Nvidia RTX GPUs.\n` +
+              `We provide bulk and commercial hardware procurement with enterprise OEM warranty & on-site deployment:\n\n` +
+              `• **Corporate Laptops**: Lenovo ThinkPad (E14, L14, T14), Dell Latitude & XPS, HP EliteBook, Apple MacBook.\n` +
+              `• **Commercial Desktops & Mini PCs**: Dell OptiPlex, HP ProDesk, Lenovo ThinkCentre Tiny (space-saving).\n` +
               `• **Industrial Printers**: HP LaserJet duplex, Canon & Epson network high-volume multifunction copiers.\n` +
-              `• **Enterprise Pricing**: Direct OEM distributor pricing with GST invoice & on-site warranty support.\n\n` +
-              `Tell me your required quantity and specifications, and we will send a tailored proposal!`,
+              `• **OEM Direct Pricing**: Bulk procurement GST billing, authorized distributor rates & 3-year on-site NBD warranty.\n\n` +
+              `Tell me how many systems you need, and we will send a tailored commercial proposal!`,
             actions: [
               { label: '💬 Inquire on WhatsApp', actionType: 'whatsapp', payload: 'Hi N4T, I need a bulk quote for commercial laptops and desktops.' },
               { label: '📝 Request Formal Quote', actionType: 'scroll', payload: 'contact' },
@@ -929,58 +977,165 @@
           };
         }
 
-        // 3. Networking / Cabling / Wi-Fi
+        // 2. Slow PC, Hang, SSD Upgrades, RAM Upgrade
+        if (
+          query.includes('hang') || query.includes('slow') || query.includes('ssd') ||
+          query.includes('ram') || query.includes('upgrade') || query.includes('speed')
+        ) {
+          return {
+            text: `⚡ **PC/Laptop Speed Boost & SSD Upgrade Service:**\n\n` +
+              `Is your office computer taking 5 minutes to start or lagging in Excel/Chrome?\n\n` +
+              `• **Old Hard Drive (HDD) to High-Speed SSD**: Boot time drops from 3 minutes to just **12 seconds**!\n` +
+              `• **Performance Jump**: 5x to 10x faster application loading without buying a new computer.\n` +
+              `• **Data Transfer Guarantee**: 100% clone of your Windows, Tally, Outlook emails, and desktop files.\n` +
+              `• **Cost**: Starting just **₹1,800 - ₹2,800** (Kingston, Crucial, WD Green/Blue with 3-year warranty).\n` +
+              `• **On-Site Upgrade**: Our engineer installs it right at your office within 1 hour!`,
+            actions: [
+              { label: '💬 Book SSD Upgrade on WhatsApp', actionType: 'whatsapp', payload: 'Hi N4T, I want to upgrade our office PCs with SSD and RAM for faster speed.' },
+              { label: '📞 Call IT Tech Desk', actionType: 'call', payload: '+917988678921' }
+            ]
+          };
+        }
+
+        // 3. Printers, Scanners, Toners, Cartridges
+        if (
+          query.includes('printer') || query.includes('toner') || query.includes('cartridge') ||
+          query.includes('xerox') || query.includes('scanner') || query.includes('print')
+        ) {
+          return {
+            text: `🖨️ **Industrial & Commercial Printing Solutions:**\n\n` +
+              `High-speed printing and copying infrastructure with lowest cost-per-page:\n\n` +
+              `• **Heavy-Duty Office Printers**: HP LaserJet (M126nw, MFP 136w, 1020 Plus), Canon imageRUNNER heavy-duty copiers.\n` +
+              `• **Low-Cost InkTank Printers**: Epson EcoTank & Brother Commercial (Cost per black page under ₹0.12/page).\n` +
+              `• **Features**: Auto-duplex 2-sided printing, Wi-Fi mobile print, network LAN sharing for 50+ staff.\n` +
+              `• **Consumables & Toners**: Bulk supply of OEM & premium compatible toner cartridges with on-site delivery.\n` +
+              `• **Printer AMC**: Maintenance contracts including pickup/drop and roller/drum servicing.`,
+            actions: [
+              { label: '💬 Inquire Printer on WhatsApp', actionType: 'whatsapp', payload: 'Hi N4T, I need printer recommendation and toner pricing for our office.' },
+              { label: '📞 Speak with Printer Team', actionType: 'call', payload: '+917988678921' }
+            ]
+          };
+        }
+
+        // 4. Networking, Cabling, LAN, Wi-Fi, Fiber, Switch, Server Rack
         if (
           query.includes('network') || query.includes('cable') || query.includes('cabling') ||
           query.includes('lan') || query.includes('wi-fi') || query.includes('wifi') ||
           query.includes('router') || query.includes('switch') || query.includes('fiber') ||
-          query.includes('cat6') || query.includes('rack') || query.includes('firewall') ||
-          query.includes('fortinet') || query.includes('sophos') || query.includes('cisco')
+          query.includes('cat6') || query.includes('cat6a') || query.includes('rack') ||
+          query.includes('firewall') || query.includes('fortinet') || query.includes('sophos') ||
+          query.includes('cisco') || query.includes('unifi') || query.includes('fluke')
         ) {
+          if (query.includes('firewall') || query.includes('security') || query.includes('fortinet') || query.includes('sophos') || query.includes('vpn')) {
+            return {
+              text: `🛡️ **Enterprise UTM Firewalls & Cyber Security (Fortinet / Sophos / Cisco):**\n\n` +
+                `Protect your corporate data and balance company internet bandwidth:\n\n` +
+                `• **Dual-WAN Auto Failover**: Connect Airtel + Tata fiber lines; if line 1 cuts, traffic switches to line 2 within 1 second!\n` +
+                `• **Site-to-Site & SSL VPN**: Secure access for branches and work-from-home staff to office servers.\n` +
+                `• **Employee Content Filtering**: Block social media, YouTube, torrents, gambling, and malicious ransomware sites.\n` +
+                `• **Bandwidth Allocation (QoS)**: Reserve dedicated internet speed for accounts, directors & billing.\n` +
+                `• **Top Models**: Fortinet FortiGate 40F/60F/70F, Sophos XGS 107/116, Cisco Meraki.`,
+              actions: [
+                { label: '💬 Inquire Firewall on WhatsApp', actionType: 'whatsapp', payload: 'Hi N4T, I need a proposal for an office hardware firewall (Fortinet/Sophos).' },
+                { label: '📞 Call Network Architect', actionType: 'call', payload: '+917988678921' }
+              ]
+            };
+          }
+
+          if (query.includes('rack')) {
+            return {
+              text: `🗄️ **Server Racks & Data Center Cabinets (4U to 42U):**\n\n` +
+                `Turnkey server rack supply, installation, and cable organizing:\n\n` +
+                `• **Wall-Mount Racks**: 4U, 6U, 9U, 12U, 15U with toughened glass front doors (Netrack, D-Link, Valrack).\n` +
+                `• **Floor-Standing Cabinets**: 24U, 32U, 36U, 42U with high-capacity perforated doors for ventilation.\n` +
+                `• **Accessories Included**: Power Distribution Units (PDU), high-RPM cooling fans, cantilever trays, horizontal/vertical cable organizers, lock keys.\n` +
+                `• **Neat Dressing**: Re-dressing messy network racks into showroom-grade clean cable layouts!`,
+              actions: [
+                { label: '💬 Inquire Server Racks on WhatsApp', actionType: 'whatsapp', payload: 'Hi N4T, I need quotation for server racks and network cabinets.' },
+                { label: '📝 Request Sizing Guide', actionType: 'scroll', payload: 'contact' }
+              ]
+            };
+          }
+
           return {
             text: `🌐 **N4T Structured Networking & Enterprise Connectivity:**\n\n` +
-              `We design and install resilient high-speed infrastructure for modern offices, factories, and campuses:\n\n` +
-              `• **Structured Cabling**: Turnkey CAT6 & CAT6A gigabit copper termination, patch cords, Fluke testing.\n` +
-              `• **Optical Fiber**: Splicing, OTDR testing, low-latency backbone for multi-building facilities.\n` +
-              `• **Seamless Wi-Fi 6**: High-density mesh access points (UniFi, Cisco, Aruba) with zero dead-zones.\n` +
-              `• **Cyber Security Firewalls**: Fortinet FortiGate, Sophos UTM, Cisco Meraki (VPN, web filtering, anti-intrusion).\n` +
-              `• **Server Racks**: 4U to 42U organized cabinets with cable management trays and PDUs.\n\n` +
-              `Need an on-site survey or office layout design?`,
+              `Turnkey network engineering for corporate offices, warehouses, and industrial plants:\n\n` +
+              `• **Structured LAN Cabling**: D-Link, CommScope, Schneider, Molex CAT6/CAT6A with Fluke channel certification.\n` +
+              `• **Optical Fiber Splicing**: Single-mode & multi-mode fiber laying, OTDR testing for long factory campus links.\n` +
+              `• **Seamless Wi-Fi 6 Mesh**: High-density access points (UniFi, Cisco, Aruba, Ruijie) with zero call drop roaming.\n` +
+              `• **Gigabit & PoE Switches**: 8/16/24/48-port Cisco, D-Link, Netgear managed switches with 10G SFP+ uplinks.\n` +
+              `• **Zero-Downtime Guarantee**: Redundant paths and organized patch panels with neat identification tags.\n\n` +
+              `Would you like to book a free on-site network survey?`,
             actions: [
               { label: '💬 Book Site Survey via WhatsApp', actionType: 'whatsapp', payload: 'Hi N4T, I would like to schedule an on-site network cabling & Wi-Fi inspection.' },
-              { label: '📝 Submit Requirements', actionType: 'scroll', payload: 'contact' }
+              { label: '📝 Submit Requirements', actionType: 'scroll', payload: 'contact' },
+              { label: '📞 Speak with Network Engineer', actionType: 'call', payload: '+917988678921' }
             ]
           };
         }
 
-        // 4. CCTV & Access Control
+        // 5. CCTV, Cameras, Surveillance, Biometric, Attendance, Access Control
         if (
           query.includes('cctv') || query.includes('camera') || query.includes('surveillance') ||
           query.includes('nvr') || query.includes('dvr') || query.includes('hikvision') ||
           query.includes('cp plus') || query.includes('dahua') || query.includes('biometric') ||
-          query.includes('attendance') || query.includes('access control')
+          query.includes('attendance') || query.includes('access control') || query.includes('fingerprint') ||
+          query.includes('face') || query.includes('recording') || query.includes('night vision')
         ) {
+          if (query.includes('biometric') || query.includes('attendance') || query.includes('access control') || query.includes('lock')) {
+            return {
+              text: `🔐 **Biometric Attendance & Access Control Systems:**\n\n` +
+                `Automate workforce tracking and secure your premises:\n\n` +
+                `• **Face Recognition & Fingerprint Terminals**: eSSL, Matrix, Realtime, ZKTeco with touchless AI face detection.\n` +
+                `• **Door Access Control**: Heavy-duty 600lbs electromagnetic door locks (EM Lock) with glass/wooden door brackets & exit button.\n` +
+                `• **Payroll Integration**: Automatically syncs clock-in/out times into Excel, Tally, or HRMS software.\n` +
+                `• **Multi-Branch Centralization**: Monitor employee attendance across 10+ branch locations from single head office dashboard.\n` +
+                `• **Capacity**: Models supporting from 50 up to 10,000 employees.`,
+              actions: [
+                { label: '💬 Inquire Biometric on WhatsApp', actionType: 'whatsapp', payload: 'Hi N4T, I need quotation for biometric attendance & access control door locks.' },
+                { label: '📞 Speak with Security Expert', actionType: 'call', payload: '+917988678921' }
+              ]
+            };
+          }
+
+          if (query.includes('recording') || query.includes('storage') || query.includes('hard disk') || query.includes('days')) {
+            return {
+              text: `📹 **CCTV Storage & Recording Capacity Guide:**\n\n` +
+                `We calculate exact surveillance hard drive capacity based on H.265+ smart compression:\n\n` +
+                `• **4 Cameras (2MP Full HD)**: 1TB = ~15 Days | 2TB = ~30 Days\n` +
+                `• **8 Cameras (2MP Full HD)**: 2TB = ~15 Days | 4TB = ~30 Days\n` +
+                `• **16 Cameras (2MP Full HD)**: 4TB = ~15 Days | 8TB = ~30 Days\n` +
+                `• **Drives Used**: Dedicated 24x7 Surveillance Grade HDDs (WD Purple / Seagate SkyHawk).\n` +
+                `• **Auto Overwrite**: Loop recording ensures latest footage is always saved without manual deletion!`,
+              actions: [
+                { label: '💬 Calculate CCTV Storage on WhatsApp', actionType: 'whatsapp', payload: 'Hi N4T, please help me calculate CCTV cameras and recording storage requirement.' },
+                { label: '📞 Call Security Engineer', actionType: 'call', payload: '+917988678921' }
+              ]
+            };
+          }
+
           return {
-            text: `📹 **Enterprise CCTV Surveillance & Smart Access Control:**\n\n` +
-              `Keep your workplace and assets safe with our high-definition optical security solutions:\n\n` +
-              `• **IP CCTV Cameras**: 2MP, 4MP, 5MP & 4K Ultra-HD with Starlight full-color night vision.\n` +
-              `• **Top Brands**: Authorized installation of Hikvision, CP Plus, Dahua, Honeywell.\n` +
-              `• **Network Video Recorders (NVR)**: Scalable multi-terabyte storage with secure mobile app live stream.\n` +
-              `• **Biometric Attendance**: Face recognition, contactless card, and fingerprint readers (Matrix, eSSL, Realtime).\n` +
-              `• **Automated Access Locks**: Electromagnetic door locks, turnstile gates, and visitor logs.\n\n` +
-              `How many cameras or access points do you require?`,
+            text: `📹 **Enterprise CCTV Surveillance Solutions:**\n\n` +
+              `Authorized installation of Hikvision, CP Plus, Dahua & Honeywell:\n\n` +
+              `• **IP Cameras**: 2MP (1080p), 4MP, 5MP, and 4K Ultra-HD resolution with wide 120° coverage.\n` +
+              `• **ColorVu / Starlight Night Vision**: Crystal clear colorful video footage even in pitch black darkness.\n` +
+              `• **Inbuilt Mic Audio Recording**: Hear and record live audio alongside high-definition video.\n` +
+              `• **Mobile App Remote Viewing**: Watch live feeds on Android & iPhone from anywhere in the world.\n` +
+              `• **Camera Types**: Dome cameras (indoor aesthetic), Bullet cameras (metal weatherproof IP67 outdoor), PTZ 360° zoom.`,
             actions: [
-              { label: '💬 Inquire on WhatsApp', actionType: 'whatsapp', payload: 'Hi N4T, I need a quotation for CCTV cameras and biometric attendance system.' },
-              { label: '📝 Fill Contact Form', actionType: 'scroll', payload: 'contact' }
+              { label: '💬 Inquire on WhatsApp', actionType: 'whatsapp', payload: 'Hi N4T, I need a quotation for IP CCTV cameras and NVR setup.' },
+              { label: '📝 Request CCTV Site Survey', actionType: 'scroll', payload: 'contact' },
+              { label: '📞 Call +91 7988678921', actionType: 'call', payload: '+917988678921' }
             ]
           };
         }
 
-        // 5. AMC Rates & Plans
+        // 6. AMC, Annual Maintenance Contract, Pricing, Charges, Maintenance
         if (
           query.includes('amc') || query.includes('contract') || query.includes('maintain') ||
           query.includes('maintenance') || query.includes('cost') || query.includes('rate') ||
-          query.includes('price') || query.includes('charge') || query.includes('kitna')
+          query.includes('price') || query.includes('pricing') || query.includes('charge') ||
+          query.includes('kitna') || query.includes('kharcha') || query.includes('discount')
         ) {
           return {
             text: `⚙️ **N4T IT Annual Maintenance Contract (AMC) Solutions:**\n\n` +
@@ -989,33 +1144,35 @@
               `• **PC / Laptop**: ₹1,600 / machine / year\n` +
               `• **CCTV Camera**: ₹750 / camera / year\n` +
               `• **Server**: ₹4,500 / server / year\n` +
-              `• Includes unlimited breakdowns, 30-min SLA, monthly health audits.\n\n` +
+              `• Includes unlimited breakdowns, 30-min SLA, monthly health audits. Faulty parts billed at cost.\n\n` +
               `🛡️ **Comprehensive AMC (Parts + Labor Included):**\n` +
               `• **PC / Laptop**: ₹3,200 / machine / year\n` +
               `• **CCTV Camera**: ₹1,200 / camera / year\n` +
               `• **Server**: ₹8,500 / server / year\n` +
               `• 100% parts covered with instant standby machine replacement.\n\n` +
-              `💡 *Tip: You can use our interactive AMC Cost Calculator right on this website!*`,
+              `🎁 **Special Offer**: 5% to 10% volume discount for corporate setups with 20+ workstations!`,
             actions: [
               { label: '🧮 Use AMC Calculator', actionType: 'scroll', payload: 'amc-calculator' },
-              { label: '💬 Chat with AMC Head', actionType: 'whatsapp', payload: 'Hi N4T, I am interested in an Annual Maintenance Contract for our office IT infrastructure.' },
+              { label: '💬 Chat with AMC Head on WhatsApp', actionType: 'whatsapp', payload: 'Hi N4T, I am interested in an Annual Maintenance Contract for our office IT infrastructure.' },
               { label: '📞 Call Direct: +91 7988678921', actionType: 'call', payload: '+917988678921' }
             ]
           };
         }
 
-        // 6. Emergency / Breakdown
+        // 7. Emergency, Breakdown, Urgent, Down, Virus, Crash, Visit, Repair, BSOD
         if (
           query.includes('emergency') || query.includes('urgent') || query.includes('down') ||
           query.includes('crash') || query.includes('virus') || query.includes('repair') ||
           query.includes('broken') || query.includes('kharab') || query.includes('kharaab') ||
-          query.includes('problem') || query.includes('visit')
+          query.includes('problem') || query.includes('help') || query.includes('engineer') ||
+          query.includes('visit') || query.includes('blue screen') || query.includes('bsod')
         ) {
           return {
             text: `🚨 **Emergency IT Breakdown Assistance (30-Min SLA):**\n\n` +
-              `Facing critical IT failure, server crash, ransom threat, or network down?\n\n` +
+              `Facing critical IT failure, server crash, ransomware threat, blue screen, or network outage?\n\n` +
               `• **Guaranteed Response**: Within 30 minutes, an engineer connects remotely or dispatches on-site.\n` +
-              `• **Active Coverage**: Faridabad, Gurugram, Noida, Delhi NCR, and surrounding industrial clusters.\n` +
+              `• **Active Zones**: Faridabad, Gurugram, Noida, Delhi NCR, and surrounding industrial clusters.\n` +
+              `• **Instant First-Aid**: Remote diagnosis via AnyDesk / TeamViewer in under 5 minutes.\n` +
               `• **Hotline Available 24x7**: Call our rapid response engineering desk immediately!\n\n` +
               `Click below to call or send immediate WhatsApp alert:`,
             actions: [
@@ -1025,17 +1182,21 @@
           };
         }
 
-        // 7. Location & Address
+        // 8. Location, Address, Where, Office, Faridabad, NCR, City, Map, Coverage
         if (
           query.includes('location') || query.includes('address') || query.includes('office') ||
-          query.includes('where') || query.includes('kahan') || query.includes('faridabad')
+          query.includes('where') || query.includes('kahan') || query.includes('faridabad') ||
+          query.includes('delhi') || query.includes('noida') || query.includes('gurgaon') ||
+          query.includes('gurugram') || query.includes('haryana') || query.includes('ballabgarh') ||
+          query.includes('manesar') || query.includes('imt')
         ) {
           return {
             text: `📍 **N4T (Network 4 Technologies) Location & Coverage:**\n\n` +
               `• **Headquarters**: Faridabad, Haryana - 121003, India\n` +
-              `• **Service Coverage**: Faridabad, Gurugram, Noida, Greater Noida, Delhi NCR, and Pan-India enterprise deployments.\n` +
-              `• **Support Desks**: On-site engineer dispatch & 24x7 remote technical assistance across India.\n\n` +
-              `Would you like to schedule an office visit or have our representative visit your premises?`,
+              `• **Local Coverage**: Faridabad (NIT, Sec 15, 16, 21, 24, 25, 31, 37, 58, 59, IMT, Ballabgarh).\n` +
+              `• **Delhi NCR Hubs**: Gurugram (Cyber City, Udyog Vihar, Manesar), Noida / Greater Noida (Sec 62, 63, Expressway), South & Central Delhi.\n` +
+              `• **Pan-India Reach**: Multi-branch enterprise deployments and on-site support across India.\n\n` +
+              `Would you like to schedule an office visit or have our engineer visit your premises?`,
             actions: [
               { label: '💬 Message on WhatsApp', actionType: 'whatsapp', payload: 'Hi N4T, I would like to schedule a meeting at your Faridabad office or our facility.' },
               { label: '📞 Call +91 8901996668', actionType: 'call', payload: '+918901996668' }
@@ -1043,20 +1204,23 @@
           };
         }
 
-        // 8. Contact & Phone
+        // 9. Contact, Phone, Number, Email, WhatsApp, Owner, Dubey, Commercial Terms, GST
         if (
           query.includes('contact') || query.includes('phone') || query.includes('number') ||
-          query.includes('call') || query.includes('email') || query.includes('whatsapp') ||
-          query.includes('dubey')
+          query.includes('mobile') || query.includes('call') || query.includes('email') ||
+          query.includes('whatsapp') || query.includes('dubey') || query.includes('shailendra') ||
+          query.includes('gst') || query.includes('bill') || query.includes('payment')
         ) {
           return {
-            text: `📞 **N4T Direct Contact Information:**\n\n` +
+            text: `📞 **N4T Direct Contact & Commercial Information:**\n\n` +
+              `• **Key Representative**: Shailendra Dubey\n` +
               `• **Primary Phone / WhatsApp**: +91 7988678921\n` +
               `• **Alternate Hotline**: +91 8901996668\n` +
               `• **Official Email**: sbdubey@n4t.in / support@n4t.in\n` +
               `• **WhatsApp Quick Link**: [Click here to chat](https://wa.me/message/PTHIABDDRPO4E1)\n` +
-              `• **Office**: Faridabad, Haryana - 121003\n` +
-              `• **Operating Hours**: 24 Hours / 7 Days active support desk.`,
+              `• **Commercial Terms**: 100% genuine GST invoices, OEM manufacturer warranties, flexible corporate credit terms for AMC clients.\n` +
+              `• **Support Desk**: 24 Hours / 7 Days a week active.\n\n` +
+              `You can reach out anytime, we respond promptly!`,
             actions: [
               { label: '💬 Open WhatsApp Direct', actionType: 'whatsapp', payload: 'Hi N4T, I would like to speak with your IT team.' },
               { label: '📞 Call +91 7988678921', actionType: 'call', payload: '+917988678921' },
@@ -1065,20 +1229,44 @@
           };
         }
 
-        // 9. Greetings & Default Fallback
+        // 10. Hindi / Hinglish Greetings & General Inquiries
+        if (
+          query.includes('namaste') || query.includes('hello') || query.includes('hi') ||
+          query.includes('hey') || query.includes('kya hal') || query.includes('kaise ho') ||
+          query.includes('kya karte ho') || query.includes('services')
+        ) {
+          return {
+            text: `Hello! 👋 Main **N4T AI Assistant** hoon. \n\nNetwork 4 Technologies companies ko complete IT Solutions provide karti hai:\n\n` +
+              `1. 🖥️ **Computer, Laptop & Printer Supply** (Dell, HP, Lenovo OEM Pricing)\n` +
+              `2. ⚙️ **IT AMC Contracts** (Regular maintenance & zero-breakdown care)\n` +
+              `3. 🌐 **Networking & Wi-Fi** (CAT6 LAN Cabling, Fiber, Fortinet/Sophos Firewall)\n` +
+              `4. 📹 **CCTV & Biometric Attendance Systems** (Hikvision, CP Plus 4K night vision)\n` +
+              `5. ⚡ **Speed Upgrades** (SSD & RAM installation with zero data loss)\n` +
+              `6. 🚨 **Emergency 30-Minute IT Support**\n\n` +
+              `Aapko kis service ki jaankari chahiye?`,
+            actions: [
+              { label: '💻 Hardware Quote', actionType: 'prompt', payload: 'I want quotation for office computers and laptops' },
+              { label: '⚙️ AMC Rates', actionType: 'prompt', payload: 'What are the AMC contract charges for office computers?' },
+              { label: '📹 CCTV Setup', actionType: 'prompt', payload: 'Tell me about CCTV camera installation' },
+              { label: '💬 WhatsApp Chat', actionType: 'whatsapp', payload: 'Hi N4T, I want to know more about your IT services.' }
+            ]
+          };
+        }
+
+        // 11. Default Fallback with Comprehensive Options
         return {
-          text: `Hello! 👋 Main **N4T AI Assistant** hoon. \n\nNetwork 4 Technologies companies ko complete IT Solutions provide karti hai:\n\n` +
-            `1. 🖥️ **Computer, Laptop & Printer Supply** (Dell, HP, Lenovo)\n` +
-            `2. ⚙️ **IT AMC Contracts** (Regular maintenance & breakdown support)\n` +
-            `3. 🌐 **Networking & Wi-Fi** (CAT6 LAN Cabling, Fiber, Firewall)\n` +
-            `4. 📹 **CCTV & Biometric Attendance Systems**\n` +
-            `5. 🚨 **Emergency 30-Minute IT Support**\n\n` +
-            `Aapko kis service ki jaankari chahiye?`,
+          text: `Thank you for reaching out! 🤝\n\n` +
+            `**Network 4 Technologies (N4T)** is an enterprise IT infrastructure leader based in Faridabad, serving Delhi NCR & Pan-India:\n\n` +
+            `• **Hardware**: Corporate Laptops, Workstations, High-Speed Printers, Server Racks.\n` +
+            `• **Networking**: Structured CAT6/6A LAN, Fiber Splicing, Mesh Wi-Fi 6, Dual-WAN Firewalls.\n` +
+            `• **Security**: HD IP CCTV, Biometric Attendance, Electromagnetic Door Locks.\n` +
+            `• **Maintenance**: Comprehensive & Non-Comprehensive Annual IT AMC.\n` +
+            `• **Emergency SLA**: 30-minute rapid on-site technician response.\n\n` +
+            `Would you like to connect directly with our engineering head or get a customized commercial estimate?`,
           actions: [
-            { label: '💻 Hardware Quote', actionType: 'prompt', payload: 'I want quotation for office computers and laptops' },
-            { label: '⚙️ AMC Rates', actionType: 'prompt', payload: 'What are the AMC contract charges for office computers?' },
-            { label: '📹 CCTV Setup', actionType: 'prompt', payload: 'Tell me about CCTV camera installation' },
-            { label: '💬 WhatsApp Chat', actionType: 'whatsapp', payload: 'Hi N4T, I want to know more about your IT services.' }
+            { label: '💬 Connect on WhatsApp', actionType: 'whatsapp', payload: `Hi N4T, I have a requirement regarding: ${userQuery}` },
+            { label: '📞 Call +91 7988678921', actionType: 'call', payload: '+917988678921' },
+            { label: '📝 Request Formal Quote', actionType: 'scroll', payload: 'contact' }
           ]
         };
       };
@@ -1175,23 +1363,23 @@
           {!isOpen && (
             <button
               onClick={() => setIsOpen(true)}
-              className="relative group flex items-center space-x-2.5 px-5 py-3.5 rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 text-white shadow-2xl hover:shadow-blue-500/50 hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none border border-white/20"
+              className="relative group flex items-center space-x-2 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 text-white shadow-lg hover:shadow-blue-500/40 hover:scale-105 active:scale-95 transition-all duration-200 focus:outline-none border border-white/25"
               aria-label="Open N4T AI Chatbot"
             >
-              <span className="absolute -inset-1 rounded-full bg-blue-500 opacity-40 group-hover:opacity-75 animate-ping duration-1000 pointer-events-none"></span>
-              <span className="relative z-10 flex items-center justify-center text-2xl">
+              <span className="absolute -inset-0.5 rounded-full bg-blue-500 opacity-40 group-hover:opacity-75 animate-ping duration-1000 pointer-events-none"></span>
+              <span className="relative z-10 text-base sm:text-lg flex items-center justify-center">
                 🤖
               </span>
               <div className="relative z-10 text-left">
-                <div className="font-bold text-xs sm:text-sm tracking-wide flex items-center space-x-1.5 leading-tight">
+                <div className="font-bold text-[11px] sm:text-xs tracking-tight flex items-center space-x-1 leading-tight">
                   <span>Ask N4T AI</span>
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                 </div>
-                <div className="text-[10px] text-cyan-200 font-medium leading-tight">
-                  24x7 IT Quotes & Help
+                <div className="hidden sm:block text-[8px] text-cyan-100 font-medium leading-tight">
+                  24x7 IT Help
                 </div>
               </div>
-              {hasUnread && <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-rose-500 border-2 border-white animate-pulse"></span>}
+              {hasUnread && <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-rose-500 border border-white animate-pulse"></span>}
             </button>
           )}
 
