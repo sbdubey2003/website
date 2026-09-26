@@ -215,6 +215,15 @@ const Header: React.FC = () => {
 
             {/* Right Quick Action Button */}
             <div className="hidden lg:flex items-center space-x-3">
+              <button
+                type="button"
+                onClick={() => window.dispatchEvent(new CustomEvent('open-n4t-chatbot'))}
+                className="inline-flex items-center space-x-1.5 px-4 py-2 rounded-full text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 shadow-sm transition hover:scale-105"
+              >
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>🤖 AI IT Assistant</span>
+              </button>
+
               <a
                 href="#contact"
                 onClick={(e) => handleNavClick(e, 'contact')}
@@ -308,7 +317,19 @@ const Header: React.FC = () => {
                   Contact & Support
                 </a>
 
-                <div className="pt-3 border-t border-slate-100">
+                <div className="pt-3 border-t border-slate-100 space-y-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      window.dispatchEvent(new CustomEvent('open-n4t-chatbot'));
+                    }}
+                    className="w-full flex items-center justify-center space-x-2 bg-blue-50 border border-blue-200 text-blue-700 font-bold py-2.5 px-4 rounded-xl shadow-sm"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>🤖 Chat with N4T AI Assistant</span>
+                  </button>
+
                   <a
                     href="#contact"
                     onClick={(e) => handleNavClick(e, 'contact')}

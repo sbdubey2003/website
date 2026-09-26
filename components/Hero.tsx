@@ -73,6 +73,16 @@ const Hero: React.FC = () => {
               >
                 Explore Solutions
               </a>
+
+              <button
+                type="button"
+                onClick={() => window.dispatchEvent(new CustomEvent('open-n4t-chatbot'))}
+                className="inline-flex items-center justify-center px-6 py-4 rounded-xl text-base font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200/90 shadow-sm hover:shadow transition duration-300 group"
+              >
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 mr-2.5 animate-ping"></span>
+                <span>Ask N4T AI Bot</span>
+                <span className="ml-2 text-xl">🤖</span>
+              </button>
             </div>
 
             {/* Quick Metrics bar */}

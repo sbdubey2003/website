@@ -7,6 +7,7 @@ import WhyChooseUs from './components/WhyChooseUs';
 import CTA from './components/CTA';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import AIChatBot from './components/AIChatBot';
 
 const App: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const App: React.FC = () => {
         <Contact />
       </main>
       <Footer />
+      <AIChatBot />
     </div>
   );
 };
